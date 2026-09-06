@@ -718,7 +718,7 @@ function startAnalysis() {
 
 
     fetch(
-        "http://127.0.0.1:5000/api/upload-resume",
+        "https://talent-vector.onrender.com/api/upload-resume",
         {
 
             method: "POST",
