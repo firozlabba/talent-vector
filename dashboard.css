@@ -1,0 +1,1056 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background:
+        radial-gradient(circle at top left, #eee7ff 0%, transparent 28%),
+        #f5f6fc;
+    color: #17182f;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* =========================
+   TOP BAR
+========================= */
+
+.topbar {
+    height: 78px;
+    background: linear-gradient(135deg, #05091e, #0b1030);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    box-shadow: 0 4px 20px rgba(5, 9, 30, .18);
+    position: relative;
+    overflow: hidden;
+}
+
+.topbar::after {
+    content: "";
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    right: -180px;
+    top: -220px;
+    border-radius: 50%;
+    background: #8147ff;
+    opacity: .08;
+    pointer-events: none;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    z-index: 2;
+
+    color: inherit;
+    text-decoration: none;
+}
+
+.brand:visited {
+    color: inherit;
+}
+
+.brand:hover {
+    color: inherit;
+}
+
+.brand-icon {
+    font-size: 38px;
+    font-weight: bold;
+    font-style: italic;
+    color: #9555ff;
+    text-shadow: 0 0 18px rgba(149, 85, 255, .35);
+}
+
+.brand h2 {
+    font-size: 19px;
+    letter-spacing: .2px;
+}
+
+.brand h2 span {
+    color: #9855ff;
+}
+
+.brand p {
+    font-size: 9px;
+    color: #c7c9d9;
+    margin-top: 3px;
+    letter-spacing: .3px;
+}
+
+.user-area {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.user-area span {
+    font-size: 14px;
+    color: #e5e6f2;
+}
+
+.user-area button {
+    border: 1px solid #777b99;
+    background: transparent;
+    color: white;
+    padding: 9px 18px;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.user-area button:hover {
+    background: #ffffff12;
+    border-color: #a98aff;
+    transform: translateY(-1px);
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 45px 0 60px;
+}
+
+/* =========================
+   WELCOME
+========================= */
+
+.welcome {
+    margin-bottom: 35px;
+    position: relative;
+}
+
+.small-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #7744db;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    padding: 7px 12px;
+    border-radius: 30px;
+    background: #eee7ff;
+    border: 1px solid #e2d6ff;
+    box-shadow: 0 4px 15px rgba(112, 54, 255, .08);
+}
+
+.small-title::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #8147ff;
+    box-shadow: 0 0 10px rgba(129, 71, 255, .7);
+}
+
+.welcome h1 {
+    font-size: 38px;
+    line-height: 1.25;
+    letter-spacing: -.6px;
+    font-weight: 800;
+}
+
+.welcome h1 span {
+    background: linear-gradient(100deg, #7036ff, #b13cf0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.welcome > div > p:last-child {
+    color: #6c6d7d;
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+/* =========================
+   UPLOAD SECTION
+========================= */
+
+.upload-section {
+    display: grid;
+    grid-template-columns: 1.5fr .8fr;
+    gap: 25px;
+}
+
+.upload-card {
+    background: rgba(255, 255, 255, .96);
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 10px 35px rgba(30, 30, 80, .08);
+    border: 1px solid rgba(120, 100, 200, .08);
+    text-align: center;
+    transition: .25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-card::before {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    left: -120px;
+    top: -120px;
+    border-radius: 50%;
+    background: #8147ff;
+    opacity: .045;
+    pointer-events: none;
+}
+
+.upload-card:hover {
+    box-shadow: 0 15px 40px rgba(30, 30, 80, .11);
+}
+
+.upload-icon {
+    width: 65px;
+    height: 65px;
+    display: grid;
+    place-items: center;
+    margin: auto;
+    border-radius: 17px;
+    background: linear-gradient(135deg, #eee7ff, #e6dcff);
+    font-size: 30px;
+    box-shadow: 0 7px 18px rgba(112, 54, 255, .12);
+    transition: .3s ease;
+}
+
+.upload-card:hover .upload-icon {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 10px 25px rgba(112, 54, 255, .18);
+}
+
+.upload-card h2 {
+    margin-top: 15px;
+    font-size: 23px;
+}
+
+.upload-card > p {
+    color: #777;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+/* =========================
+   DROP BOX
+========================= */
+
+.upload-box {
+    margin-top: 25px;
+    border: 2px dashed #b7a3ec;
+    border-radius: 15px;
+    padding: 35px 20px;
+    background: linear-gradient(135deg, #fbfaff, #f8f5ff);
+    transition: .25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-box::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: #9b62ff;
+    opacity: .035;
+    right: -90px;
+    bottom: -100px;
+    pointer-events: none;
+}
+
+.upload-box:hover {
+    border-color: #8959ec;
+    background: #f8f4ff;
+}
+
+.upload-box.dragging {
+    background: #f0eaff;
+    border-color: #7947e8;
+    transform: scale(1.01);
+}
+
+.cloud {
+    font-size: 40px;
+    filter: drop-shadow(0 5px 10px rgba(112, 54, 255, .12));
+}
+
+.upload-box h3 {
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+.upload-box p {
+    color: #999;
+    margin: 8px 0;
+    font-size: 12px;
+}
+
+.browse-btn {
+    border: none;
+    background: linear-gradient(100deg, #7036ff, #a337ef);
+    color: white;
+    padding: 11px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: .25s ease;
+    box-shadow: 0 5px 14px rgba(112, 54, 255, .16);
+    position: relative;
+    overflow: hidden;
+}
+
+.browse-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(112, 54, 255, .25);
+}
+
+.upload-box small {
+    display: block;
+    margin-top: 14px;
+    color: #999;
+    font-size: 10px;
+}
+
+/* =========================
+   FILE INFO
+========================= */
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    padding: 13px;
+    background: #f5f2ff;
+    border: 1px solid #e8defc;
+    border-radius: 11px;
+    text-align: left;
+}
+
+.file-icon {
+    font-size: 25px;
+}
+
+.file-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.file-details strong {
+    font-size: 13px;
+    word-break: break-all;
+}
+
+.file-details span {
+    font-size: 10px;
+    color: #888;
+}
+
+.remove-btn {
+    border: none;
+    background: #ffe5e5;
+    color: #d33;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    transition: .2s ease;
+}
+
+.remove-btn:hover {
+    background: #ffd3d3;
+    transform: rotate(8deg);
+}
+
+.hidden {
+    display: none;
+}
+
+/* =========================
+   ANALYZE BUTTON
+========================= */
+
+.analyze-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+    border: none;
+    border-radius: 9px;
+    background: linear-gradient(100deg, #7036ff, #a337ef);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .25s ease;
+    box-shadow: 0 6px 18px rgba(112, 54, 255, .18);
+    position: relative;
+    overflow: hidden;
+}
+
+.analyze-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 9px 22px rgba(112, 54, 255, .28);
+}
+
+.analyze-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.analyze-btn:disabled {
+    background: #c7c7d2;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* =========================
+   INFO CARD
+========================= */
+
+.info-card {
+    background: linear-gradient(145deg, #080d29, #0c1236);
+    color: white;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 10px 30px rgba(5, 9, 30, .18);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(145, 111, 255, .12);
+}
+
+.info-card::before {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #7947e8;
+    opacity: .08;
+    top: -70px;
+    right: -50px;
+}
+
+.info-card h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.info-item {
+    display: flex;
+    gap: 13px;
+    padding: 17px 0;
+    border-bottom: 1px solid #262b4b;
+    border-radius: 10px;
+    transition: .25s ease;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-item:hover {
+    background: rgba(255,255,255,.025);
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+.info-item > div:first-child {
+    font-size: 24px;
+}
+
+.info-item h3 {
+    font-size: 13px;
+}
+
+.info-item p {
+    color: #b8bbcd;
+    font-size: 10px;
+    line-height: 1.5;
+    margin-top: 5px;
+}
+
+/* =========================
+   AI CAREER ANALYSIS
+========================= */
+
+.future-section {
+    margin-top: 40px;
+}
+
+.future-section > h2 {
+    font-size: 22px;
+    letter-spacing: -.2px;
+    display: inline-block;
+}
+
+.future-section > h2::after {
+    content: "";
+    display: block;
+    width: 42px;
+    height: 3px;
+    margin-top: 7px;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #7036ff, #a337ef);
+}
+
+.future-section > p {
+    color: #777;
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+/* =========================
+   ANALYSIS GRID
+========================= */
+
+.future-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 22px;
+    align-items: stretch;
+}
+
+/* =========================
+   ANALYSIS CARD
+========================= */
+
+.future-card {
+    background: rgba(255, 255, 255, .97);
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 6px 22px rgba(30, 30, 80, .06);
+    border: 1px solid #eeeefa;
+    transition: .25s ease;
+    min-width: 0;
+    min-height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+.future-card::before {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    right: -70px;
+    top: -70px;
+    border-radius: 50%;
+    background: #8147ff;
+    opacity: .035;
+    transition: .3s ease;
+}
+
+.future-card:hover::before {
+    transform: scale(1.5);
+    opacity: .06;
+}
+
+.future-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 35px rgba(30, 30, 80, .11);
+    border-color: #e4dafc;
+}
+
+.future-card > div {
+    font-size: 30px;
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #f0eaff, #e7dcff);
+    box-shadow: 0 7px 18px rgba(112,54,255,.10);
+    transition: .3s ease;
+}
+
+.future-card:hover > div {
+    transform: translateY(-3px) rotate(-2deg);
+}
+
+.future-card h3 {
+    margin-top: 13px;
+    font-size: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.future-card p {
+    color: #777;
+    font-size: 12px;
+    line-height: 1.55;
+    margin-top: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.future-card span {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 9px;
+    color: #7545d9;
+    background: #eee7ff;
+    padding: 6px 9px;
+    border-radius: 20px;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================================================
+   DESKTOP CARD ORDER
+
+   1 = Job Matching
+   2 = Skill Gap
+   3 = Learning Roadmap
+   4 = Career Profile
+
+   Desired:
+   Job Matching | Career Profile
+   Skill Gap     | Learning Roadmap
+========================================================= */
+
+@media (min-width: 851px) {
+
+    .future-grid .future-card:nth-child(1) {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .future-grid .future-card:nth-child(2) {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .future-grid .future-card:nth-child(3) {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .future-grid .future-card:nth-child(4) {
+        grid-column: 2;
+        grid-row: 1;
+    }
+}
+
+/* =========================
+   JOB MATCHING
+========================= */
+
+#jobMatchingResult {
+    max-height: 330px;
+    overflow-y: auto;
+    padding-right: 6px;
+    scrollbar-width: thin;
+    scrollbar-color: #c8b7ed transparent;
+}
+
+#jobMatchingResult strong {
+    color: #24264b;
+    font-size: 12px;
+}
+
+#jobMatchingResult span {
+    display: inline-block;
+    margin-left: 4px;
+    padding: 4px 7px;
+    border-radius: 20px;
+    background: #eee7ff;
+    color: #7040d8;
+    font-size: 9px;
+    font-weight: bold;
+    box-shadow: 0 3px 9px rgba(112,54,255,.08);
+}
+
+#jobMatchingResult small {
+    color: #777;
+    font-size: 10px;
+    line-height: 1.4;
+}
+
+#jobMatchingResult::-webkit-scrollbar {
+    width: 4px;
+}
+
+#jobMatchingResult::-webkit-scrollbar-thumb {
+    background: #c8b7ed;
+    border-radius: 10px;
+}
+
+#jobMatchingResult::-webkit-scrollbar-track {
+    background: #f7f5fc;
+}
+
+/* =========================
+   SKILL GAP
+   NO PERCENTAGE
+   NO PROGRESS BAR
+========================= */
+
+#skillGapResult {
+    line-height: 1.7;
+    scrollbar-width: thin;
+    scrollbar-color: #c8b7ed transparent;
+}
+
+#skillGapResult::-webkit-scrollbar {
+    width: 4px;
+}
+
+#skillGapResult::-webkit-scrollbar-thumb {
+    background: #c8b7ed;
+    border-radius: 10px;
+}
+
+#skillGapResult > div {
+    transition: .22s ease;
+}
+
+/* =========================
+   LEARNING ROADMAP
+========================= */
+
+#learningRoadmapResult {
+    line-height: 1.7;
+    scrollbar-width: thin;
+    scrollbar-color: #c8b7ed transparent;
+}
+
+#learningRoadmapResult::-webkit-scrollbar {
+    width: 4px;
+}
+
+#learningRoadmapResult::-webkit-scrollbar-thumb {
+    background: #c8b7ed;
+    border-radius: 10px;
+}
+
+#learningRoadmapResult > div {
+    transition: .22s ease;
+}
+
+/* =========================
+   CAREER PROFILE
+========================= */
+
+#careerProfileResult {
+    line-height: 1.55;
+    font-size: 11px;
+    scrollbar-width: thin;
+    scrollbar-color: #c8b7ed transparent;
+}
+
+#careerProfileResult::-webkit-scrollbar {
+    width: 4px;
+}
+
+#careerProfileResult::-webkit-scrollbar-thumb {
+    background: #c8b7ed;
+    border-radius: 10px;
+}
+
+#careerProfileResult strong {
+    color: #2b2d55;
+    font-weight: 700;
+}
+
+/* =========================
+   STATUS BADGES
+========================= */
+
+#jobMatchingStatus,
+#skillGapStatus,
+#learningRoadmapStatus,
+#careerProfileStatus {
+    font-weight: 600;
+    letter-spacing: .2px;
+}
+
+/* =========================
+   BUTTON SHINE EFFECT
+========================= */
+
+.browse-btn::before,
+.analyze-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 80%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.25),
+        transparent
+    );
+    transform: skewX(-20deg);
+    transition: .55s ease;
+}
+
+.browse-btn:hover::before,
+.analyze-btn:hover:not(:disabled)::before {
+    left: 140%;
+}
+
+/* =========================
+   SELECTION
+========================= */
+
+::selection {
+    background: #dcd0ff;
+    color: #211542;
+}
+
+/* =========================
+   FOCUS
+========================= */
+
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid #8b5cf6;
+    outline-offset: 3px;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (min-width: 851px) and (max-width: 1050px) {
+
+    .dashboard {
+        width: 92%;
+    }
+
+    .future-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .upload-section {
+        grid-template-columns: 1.3fr .9fr;
+    }
+
+    .future-card {
+        min-height: 280px;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+    .upload-section {
+        grid-template-columns: 1fr;
+    }
+
+    .future-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    /*
+       Mobile order:
+       Job Matching
+       Skill Gap
+       Learning Roadmap
+       Career Profile
+    */
+
+    .future-grid .future-card:nth-child(1),
+    .future-grid .future-card:nth-child(2),
+    .future-grid .future-card:nth-child(3),
+    .future-grid .future-card:nth-child(4) {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .welcome h1 {
+        font-size: 30px;
+    }
+
+    .future-card {
+        padding: 22px;
+        min-height: 260px;
+    }
+
+    .dashboard {
+        width: 92%;
+        padding: 35px 0 50px;
+    }
+
+    .topbar::after {
+        width: 260px;
+        height: 260px;
+        right: -130px;
+        top: -150px;
+    }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 500px) {
+
+    .topbar {
+        padding: 14px 20px;
+        height: auto;
+        min-height: 70px;
+    }
+
+    .brand h2 {
+        font-size: 16px;
+    }
+
+    .brand p {
+        font-size: 8px;
+    }
+
+    .brand-icon {
+        font-size: 30px;
+    }
+
+    .user-area {
+        gap: 8px;
+    }
+
+    .user-area span {
+        display: none;
+    }
+
+    .user-area button {
+        padding: 8px 13px;
+        font-size: 11px;
+    }
+
+    .dashboard {
+        width: 92%;
+        padding: 30px 0 45px;
+    }
+
+    .welcome {
+        margin-bottom: 28px;
+    }
+
+    .small-title {
+        font-size: 9px;
+        padding: 6px 10px;
+    }
+
+    .welcome h1 {
+        font-size: 27px;
+    }
+
+    .welcome > div > p:last-child {
+        font-size: 12px;
+    }
+
+    .upload-card {
+        padding: 22px 15px;
+        border-radius: 17px;
+    }
+
+    .info-card {
+        padding: 22px;
+        border-radius: 17px;
+    }
+
+    .future-card {
+        padding: 20px;
+        min-height: 250px;
+    }
+
+    .future-card > div {
+        width: 48px;
+        height: 48px;
+        font-size: 26px;
+    }
+
+    .future-section {
+        margin-top: 32px;
+    }
+
+    .future-section > h2 {
+        font-size: 20px;
+    }
+
+    .future-section > p {
+        font-size: 12px;
+    }
+
+    .upload-box {
+        padding: 28px 15px;
+    }
+
+    .browse-btn,
+    .analyze-btn {
+        min-height: 44px;
+    }
+}
+
+/* =========================
+   EXTRA SMALL DEVICES
+========================= */
+
+@media (max-width: 360px) {
+
+    .welcome h1 {
+        font-size: 24px;
+    }
+
+    .upload-card {
+        padding: 20px 12px;
+    }
+
+    .future-card {
+        padding: 18px;
+    }
+
+    .info-card {
+        padding: 18px;
+    }
+}
+
+/* =========================
+   REDUCE MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

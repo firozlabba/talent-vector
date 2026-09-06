@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Register | Talent Vector</title>
+
+    <link rel="stylesheet" href="auth.css">
+
+</head>
+
+<body>
+
+<div class="auth-container">
+
+    <div class="auth-left">
+
+        <a href="index.html" class="brand">
+
+            <div class="brand-icon">V</div>
+
+            <div>
+                <h2>TALENT <span>VECTOR</span></h2>
+                <p>AI-Powered Career Intelligence</p>
+            </div>
+
+        </a>
+
+
+        <div class="left-content">
+
+            <h1>
+                Build Your<br>
+                <span>Career With AI</span>
+            </h1>
+
+            <p>
+                Create your account and discover jobs that
+                match your skills, experience and career goals.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="auth-right">
+
+        <div class="auth-card">
+
+            <div class="auth-icon">
+                🚀
+            </div>
+
+            <h1>Create Account</h1>
+
+            <p class="subtitle">
+                Start your AI-powered career journey
+            </p>
+
+
+            <form id="registerForm">
+
+                <label>Full Name</label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Create a password"
+                    minlength="6"
+                    required
+                >
+
+
+                <label>Confirm Password</label>
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm your password"
+                    minlength="6"
+                    required
+                >
+
+
+                <button type="submit">
+                    Create Account
+                </button>
+
+            </form>
+
+
+            <div class="separator">
+                <span>OR</span>
+            </div>
+
+
+            <p class="account-text">
+
+                Already have an account?
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </p>
+
+
+            <a href="index.html" class="back-home">
+                ← Back to Home
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+document
+.getElementById("registerForm")
+.addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    const name =
+        document.getElementById("name").value.trim();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const confirmPassword =
+        document.getElementById("confirmPassword").value;
+
+
+    if (password !== confirmPassword) {
+
+        alert("Passwords do not match!");
+
+        return;
+    }
+
+
+    const user = {
+
+        name: name,
+        email: email,
+        password: password
+
+    };
+
+
+    localStorage.setItem(
+        "talentVectorUser",
+        JSON.stringify(user)
+    );
+
+
+    alert(
+        "Account created successfully!"
+    );
+
+
+    window.location.href = "login.html";
+
+});
+
+</script>
+
+</body>
+</html>

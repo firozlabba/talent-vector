@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Resume Analyzer | Talent Vector</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <!-- Logo → Home -->
+
+    <a href="index.html" class="brand">
+
+        <div class="brand-icon">V</div>
+
+        <div>
+            <h2>TALENT <span>VECTOR</span></h2>
+            <p>AI-Powered Career Intelligence</p>
+        </div>
+
+    </a>
+
+
+    <div class="user-area">
+
+        <span id="userName">
+            User
+        </span>
+
+        <button onclick="logout()">
+            Logout
+        </button>
+
+    </div>
+
+</header>
+
+
+<main class="dashboard">
+
+    <section class="welcome">
+
+        <div>
+
+            <p class="small-title">
+                AI CAREER INTELLIGENCE
+            </p>
+
+            <h1>
+                Discover Your
+                <span>Career Potential</span>
+            </h1>
+
+            <p>
+                Upload your resume and let our AI analyze your
+                skills, experience and career profile.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Upload -->
+
+    <section class="upload-section">
+
+        <div class="upload-card">
+
+            <div class="upload-icon">
+                📄
+            </div>
+
+            <h2>
+                Upload Your Resume
+            </h2>
+
+            <p>
+                Upload your latest resume and our AI will
+                analyze it automatically.
+            </p>
+
+
+            <div
+                class="upload-box"
+                id="dropArea">
+
+                <div class="cloud">
+                    ☁️
+                </div>
+
+                <h3>
+                    Drag & Drop your resume here
+                </h3>
+
+                <p>
+                    or
+                </p>
+
+                <button
+                    class="browse-btn"
+                    onclick="document.getElementById('resumeFile').click()">
+
+                    Browse File
+
+                </button>
+
+                <input
+                    type="file"
+                    id="resumeFile"
+                    accept=".pdf,.doc,.docx"
+                    hidden
+                >
+
+                <small>
+                    Supported formats: PDF, DOC, DOCX
+                </small>
+
+            </div>
+
+
+            <div
+                id="fileInfo"
+                class="file-info hidden">
+
+                <div class="file-icon">
+                    📄
+                </div>
+
+                <div class="file-details">
+
+                    <strong id="fileName"></strong>
+
+                    <span id="fileSize"></span>
+
+                </div>
+
+                <button
+                    class="remove-btn"
+                    onclick="removeFile()">
+
+                    ×
+
+                </button>
+
+            </div>
+
+
+            <button
+                id="analyzeBtn"
+                class="analyze-btn"
+                onclick="startAnalysis()"
+                disabled>
+
+                🧠 Analyze My Resume
+
+            </button>
+
+        </div>
+
+
+        <!-- AI Information -->
+
+        <div class="info-card">
+
+            <h2>
+                What our AI analyzes
+            </h2>
+
+
+            <div class="info-item">
+
+                <div>
+                    🎯
+                </div>
+
+                <div>
+
+                    <h3>
+                        Skills
+                    </h3>
+
+                    <p>
+                        Detect technical and soft skills
+                        from your resume.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <div>
+                    💼
+                </div>
+
+                <div>
+
+                    <h3>
+                        Experience
+                    </h3>
+
+                    <p>
+                        Understand your experience,
+                        roles and achievements.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <div>
+                    📊
+                </div>
+
+                <div>
+
+                    <h3>
+                        Career Profile
+                    </h3>
+
+                    <p>
+                        Build an AI-powered profile
+                        from your resume.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <div>
+                    🚀
+                </div>
+
+                <div>
+
+                    <h3>
+                        Job Potential
+                    </h3>
+
+                    <p>
+                        Find career opportunities
+                        that match your profile.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- AI Career Analysis -->
+
+    <section class="future-section">
+
+        <h2>
+            Your AI Career Analysis
+        </h2>
+
+        <p>
+            Upload your resume to unlock these features.
+        </p>
+
+
+        <div class="future-grid">
+
+
+            <!-- Job Matching -->
+
+            <div class="future-card">
+
+                <div>
+                    🎯
+                </div>
+
+                <h3>
+                    Job Matching
+                </h3>
+
+                <p id="jobMatchingResult">
+                    Upload your resume to get job recommendations.
+                </p>
+
+                <span id="jobMatchingStatus">
+                    Waiting for analysis
+                </span>
+
+            </div>
+
+
+            <!-- Skill Gap -->
+
+            <div class="future-card">
+
+                <div>
+                    ⚡
+                </div>
+
+                <h3>
+                    Skill Gap
+                </h3>
+
+                <p id="skillGapResult">
+                    Your missing skills will appear here.
+                </p>
+
+                <span id="skillGapStatus">
+                    Waiting for analysis
+                </span>
+
+            </div>
+
+
+            <!-- Learning Roadmap -->
+
+            <div class="future-card">
+
+                <div>
+                    🗺️
+                </div>
+
+                <h3>
+                    Learning Roadmap
+                </h3>
+
+                <p id="learningRoadmapResult">
+                    Your personalized learning roadmap
+                    will appear here.
+                </p>
+
+                <span id="learningRoadmapStatus">
+                    Waiting for analysis
+                </span>
+
+            </div>
+
+
+            <!-- Career Profile -->
+
+            <div class="future-card">
+
+                <div>
+                    👤
+                </div>
+
+                <h3>
+                    Career Profile
+                </h3>
+
+                <p id="careerProfileResult">
+                    Upload your resume to generate
+                    your career profile.
+                </p>
+
+                <span id="careerProfileStatus">
+                    Waiting for analysis
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="dashboard.js"></script>
+
+</body>
+</html>

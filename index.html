@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Talent Vector - AI Career Intelligence</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar" id="top">
+
+    <div class="logo">
+
+        <div class="logo-icon">V</div>
+
+        <div>
+            <h2>TALENT <span>VECTOR</span></h2>
+            <p>AI-Powered Career Intelligence</p>
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <a href="#home" class="active">
+            Home
+        </a>
+
+        <a href="#about">
+            About
+        </a>
+
+        <a href="#features">
+            Features
+        </a>
+
+        <a href="#how">
+            How It Works
+        </a>
+
+        <a href="#recruiters">
+            For Recruiters
+        </a>
+
+        <a href="#contact">
+            Contact
+        </a>
+
+    </nav>
+
+
+    <div class="nav-buttons">
+
+        <button class="login-btn"
+                onclick="window.location.href='login.html'">
+
+            <i class="fa-regular fa-user"></i>
+            Login
+
+        </button>
+
+
+        <button class="register-btn"
+                onclick="window.location.href='register.html'">
+
+            <i class="fa-regular fa-user"></i>
+            Register
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     HOME / HERO
+===================================================== -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>
+
+            <span>AI-Powered</span>
+            Resume Screening
+
+            <br>
+
+            & <span>Job Recommendation</span>
+
+        </h1>
+
+
+        <div class="title-line"></div>
+
+
+        <p>
+
+            Upload your resume and let our AI analyze your skills,
+            match you with the best job opportunities, and
+            build your path to success.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <button class="primary-btn"
+                    onclick="uploadResume()">
+
+                <i class="fa-solid fa-upload"></i>
+
+                Upload Resume
+
+            </button>
+
+
+            <button class="secondary-btn"
+                    onclick="window.location.href='dashboard.html'">
+
+                <i class="fa-solid fa-briefcase"></i>
+
+                Explore Jobs
+
+            </button>
+
+        </div>
+
+
+        <div class="trusted">
+
+            <div class="avatars">
+
+                <span>👨🏻</span>
+                <span>👨🏽</span>
+                <span>👩🏻</span>
+                <span>👨🏻</span>
+                <span>👩🏽</span>
+
+            </div>
+
+
+            <div class="trusted-number">
+                1K+
+            </div>
+
+
+            <p>
+                Trusted by 1,000+ job seekers
+            </p>
+
+        </div>
+
+
+        <input
+            type="file"
+            id="resumeInput"
+            accept=".pdf,.doc,.docx"
+            hidden>
+
+    </div>
+
+
+
+    <!-- =================================================
+         RESUME VISUAL
+    ================================================== -->
+
+    <div class="resume-area">
+
+        <div class="orbit orbit1"></div>
+        <div class="orbit orbit2"></div>
+
+
+        <div class="resume-card">
+
+            <div class="resume-header">
+
+                <strong>
+                    Your Resume
+                </strong>
+
+                <div class="shield">
+                    ✓
+                </div>
+
+            </div>
+
+
+            <div class="profile">
+
+                <div class="profile-icon">
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+
+                <div class="profile-lines">
+
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+            </div>
+
+
+            <h4>
+                Skills
+            </h4>
+
+
+            <div class="skills">
+
+                <span>Python</span>
+                <span>SQL</span>
+                <span>ML</span>
+                <span>NLP</span>
+                <span>Excel</span>
+
+            </div>
+
+
+            <h4>
+                Experience
+            </h4>
+
+            <p>
+                3+ Years
+            </p>
+
+
+            <h4>
+                Education
+            </h4>
+
+            <p>
+                B.Sc Computer Science
+            </p>
+
+        </div>
+
+
+        <div class="glow-circle"></div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         SCORE CARDS
+    ================================================== -->
+
+    <div class="score-cards">
+
+        <div class="score-card">
+
+            <div class="circle-score">
+
+                <span>
+                    92%
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Match Score
+                </h3>
+
+                <p>
+                    Great Match! 🚀
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="score-card">
+
+            <div class="card-icon blue">
+
+                <i class="fa-solid fa-briefcase"></i>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Top Job Matches
+                </h3>
+
+                <p>
+                    12 New Opportunities
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="score-card">
+
+            <div class="card-icon purple">
+
+                <i class="fa-solid fa-chart-column"></i>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Skill Gap
+                </h3>
+
+                <p>
+                    3 Skills to Improve
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="score-card">
+
+            <div class="card-icon orange">
+
+                <i class="fa-solid fa-graduation-cap"></i>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Learning Roadmap
+                </h3>
+
+                <p>
+                    Personalized for You
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     STATISTICS
+===================================================== -->
+
+<section class="stats">
+
+    <div class="stat">
+
+        <div class="stat-icon purple">
+            <i class="fa-solid fa-user"></i>
+        </div>
+
+        <div>
+
+            <h2>
+                1,000+
+            </h2>
+
+            <p>
+                Resumes Analyzed
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="divider"></div>
+
+
+    <div class="stat">
+
+        <div class="stat-icon green">
+            <i class="fa-solid fa-briefcase"></i>
+        </div>
+
+        <div>
+
+            <h2>
+                750+
+            </h2>
+
+            <p>
+                Active Job Opportunities
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="divider"></div>
+
+
+    <div class="stat">
+
+        <div class="stat-icon blue">
+            <i class="fa-solid fa-bullseye"></i>
+        </div>
+
+        <div>
+
+            <h2>
+                85%
+            </h2>
+
+            <p>
+                Average Match Accuracy
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="divider"></div>
+
+
+    <div class="stat">
+
+        <div class="stat-icon orange">
+            <i class="fa-regular fa-face-smile"></i>
+        </div>
+
+        <div>
+
+            <h2>
+                500+
+            </h2>
+
+            <p>
+                Happy Users
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section class="about-section" id="about">
+
+    <div class="about-content">
+
+        <div class="section-heading">
+
+            <i class="fa-solid fa-circle-info"></i>
+
+            <h2>
+                About Talent Vector
+            </h2>
+
+        </div>
+
+
+        <div class="heading-line"></div>
+
+
+        <h3>
+            Smarter Careers. Better Opportunities.
+        </h3>
+
+
+        <p>
+            Talent Vector is an AI-powered career intelligence
+            platform designed to help job seekers understand
+            their skills, discover suitable career opportunities,
+            and build a personalized learning path.
+        </p>
+
+
+        <p>
+            Our system analyzes resume information such as
+            skills, experience and career interests to provide
+            meaningful job recommendations and identify
+            important skill gaps.
+        </p>
+
+
+        <div class="about-highlights">
+
+            <div>
+
+                <i class="fa-solid fa-brain"></i>
+
+                <strong>
+                    AI-Powered Analysis
+                </strong>
+
+                <span>
+                    Understand your career profile.
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <i class="fa-solid fa-bullseye"></i>
+
+                <strong>
+                    Smart Matching
+                </strong>
+
+                <span>
+                    Find roles matching your skills.
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <i class="fa-solid fa-road"></i>
+
+                <strong>
+                    Career Growth
+                </strong>
+
+                <span>
+                    Build your path for future growth.
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="about-visual">
+
+        <div class="about-box">
+
+            <div class="about-icon">
+                <i class="fa-solid fa-chart-line"></i>
+            </div>
+
+            <h3>
+                Your Career,
+                <span>Intelligently Analyzed.</span>
+            </h3>
+
+            <p>
+                Skills → Job Matching → Skill Gap →
+                Learning Roadmap
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     POWERFUL FEATURES
+===================================================== -->
+
+<section class="premium-features" id="features">
+
+    <div class="premium-heading">
+
+        <span class="section-pill">
+            FEATURES
+        </span>
+
+        <h2>
+            Powerful <span>Features</span>
+        </h2>
+
+        <p>
+            Everything you need to analyze, improve,
+            and grow your career with AI.
+        </p>
+
+    </div>
+
+
+    <div class="premium-feature-grid">
+
+
+        <!-- FEATURE 01 -->
+
+        <div class="premium-feature-card feature-purple">
+
+            <div class="feature-top">
+
+                <div class="premium-feature-icon">
+                    <i class="fa-solid fa-file-circle-check"></i>
+                </div>
+
+                <span class="feature-number">
+                    01
+                </span>
+
+            </div>
+
+
+            <h3>
+                AI Resume Screening
+            </h3>
+
+
+            <p>
+                Advanced AI analyzes your resume
+                and finds the best opportunities for you.
+            </p>
+
+
+            <div class="feature-checks">
+
+                <span>
+                    <i class="fa-solid fa-check"></i>
+                    NLP-based analysis
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-check"></i>
+                    Skill extraction
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-check"></i>
+                    Smart recommendations
+                </span>
+
+            </div>
+
+
+            <a href="#how">
+                Learn More
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+
+
+        <!-- FEATURE 02 -->
+
+        <div class="premium-feature-card feature-green">
+
+            <div class="feature-top">
+
+                <div class="premium-feature-icon">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+
+                <span class="feature-number">
+                    02
+                </span>
+
+            </div>
+
+
+            <h3>
+                Job Recommendation
+            </h3>
+
+
+            <p>
+                Get personalized job recommendations
+                based on your skills and interests.
+            </p>
+
+
+            <div class="feature-checks">
+
+                <span>
+                    <i class="fa-solid fa-check"></i>
+                    Role matching
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-check"></i>
+                    Industry insights
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-check"></i>
+                    Smart opportunities
+                </span>
+
+            </div>
+
+
+            <a href="#how">
+                Learn More
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+
+
+        <!-- FEATURE 03 -->
+
+        <div class="premium-feature-card feature-blue">
+
+            <div class="feature-top">
+
+                <div class="premium-feature-icon">
+                    <i class="fa-solid fa-chart-column"></i>
+                </div>
+
+                <span class="feature-number">
+                    03
+                </span>
+
+            </div>
+
+
+            <h3>
+                Resume Strength Dashboard
+            </h3>
+
+
+            <p>
+                Get detailed insights and improve
+                your resume quality.
+            </p>
+
+
+            <div class="feature-checks">
+
+                <span>
+                    <i class="fa-solid fa-check"></i>
+                    Strength analysis
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-check"></i>
+                    Improvement tips
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-check"></i>
+                    Resume insights
+                </span>
+
+            </div>
+
+
+            <a href="#how">
+                Learn More
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+
+
+        <!-- FEATURE 04 -->
+
+        <div class="premium-feature-card feature-orange">
+
+            <div class="feature-top">
+
+                <div class="premium-feature-icon">
+                    <i class="fa-solid fa-bullseye"></i>
+                </div>
+
+                <span class="feature-number">
+                    04
+                </span>
+
+            </div>
+
+
+            <h3>
+                Skill Gap Analyzer
+            </h3>
+
+
+            <p>
+                Identify missing skills and know
+                where to focus for better opportunities.
+            </p>
+
+
+            <div class="feature-checks">
+
+                <span>
+                    <i class="fa-solid fa-check"></i>
+                    Missing skills detection
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-check"></i>
+                    Skill level analysis
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-check"></i>
+                    Personalized suggestions
+                </span>
+
+            </div>
+
+
+            <a href="#how">
+                Learn More
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+
+
+        <!-- FEATURE 05 -->
+
+        <div class="premium-feature-card feature-pink">
+
+            <div class="feature-top">
+
+                <div class="premium-feature-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+
+                <span class="feature-number">
+                    05
+                </span>
+
+            </div>
+
+
+            <h3>
+                Learning Roadmap
+            </h3>
+
+
+            <p>
+                Get a personalized learning path
+                with useful courses and resources.
+            </p>
+
+
+            <div class="feature-checks">
+
+                <span>
+                    <i class="fa-solid fa-check"></i>
+                    Customized roadmap
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-check"></i>
+                    Learning resources
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-check"></i>
+                    Career growth
+                </span>
+
+            </div>
+
+
+            <a href="#how">
+                Learn More
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     HOW IT WORKS
+===================================================== -->
+
+<section class="premium-how" id="how">
+
+    <div class="premium-heading">
+
+        <span class="section-pill">
+            PROCESS
+        </span>
+
+        <h2>
+            How It <span>Works</span>
+        </h2>
+
+        <p>
+            Get started in minutes and take the next
+            step in your career.
+        </p>
+
+    </div>
+
+
+    <div class="process-wrapper">
+
+        <div class="process-line"></div>
+
+
+        <!-- STEP 1 -->
+
+        <div class="process-step">
+
+            <div class="process-icon process-purple">
+
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+
+            </div>
+
+            <span class="process-number">
+                Step 1
+            </span>
+
+            <h3>
+                Upload Resume
+            </h3>
+
+            <p>
+                Upload your resume in PDF
+                or DOCX format.
+            </p>
+
+        </div>
+
+
+
+        <!-- STEP 2 -->
+
+        <div class="process-step">
+
+            <div class="process-icon process-green">
+
+                <i class="fa-solid fa-brain"></i>
+
+            </div>
+
+            <span class="process-number">
+                Step 2
+            </span>
+
+            <h3>
+                AI Analysis
+            </h3>
+
+            <p>
+                Our AI extracts skills,
+                experience and keywords.
+            </p>
+
+        </div>
+
+
+
+        <!-- STEP 3 -->
+
+        <div class="process-step">
+
+            <div class="process-icon process-blue">
+
+                <i class="fa-solid fa-bullseye"></i>
+
+            </div>
+
+            <span class="process-number">
+                Step 3
+            </span>
+
+            <h3>
+                Job Matching
+            </h3>
+
+            <p>
+                We match you with the most
+                relevant opportunities.
+            </p>
+
+        </div>
+
+
+
+        <!-- STEP 4 -->
+
+        <div class="process-step">
+
+            <div class="process-icon process-orange">
+
+                <i class="fa-solid fa-chart-column"></i>
+
+            </div>
+
+            <span class="process-number">
+                Step 4
+            </span>
+
+            <h3>
+                Skill Gap Analysis
+            </h3>
+
+            <p>
+                Identify skills you can improve
+                for better matches.
+            </p>
+
+        </div>
+
+
+
+        <!-- STEP 5 -->
+
+        <div class="process-step">
+
+            <div class="process-icon process-pink">
+
+                <i class="fa-solid fa-graduation-cap"></i>
+
+            </div>
+
+            <span class="process-number">
+                Step 5
+            </span>
+
+            <h3>
+                Learning Roadmap
+            </h3>
+
+            <p>
+                Get a personalized learning
+                path to grow your career.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOR RECRUITERS
+===================================================== -->
+
+<section class="recruiter-section" id="recruiters">
+
+    <div class="recruiter-visual">
+
+        <div class="recruiter-card">
+
+            <div class="recruiter-icon">
+
+                <i class="fa-solid fa-users"></i>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    TALENT VECTOR
+                </span>
+
+                <h3>
+                    Find the Right Talent Faster
+                </h3>
+
+            </div>
+
+
+            <div class="recruiter-stats">
+
+                <div>
+                    <strong>Smart</strong>
+                    <small>Candidate Matching</small>
+                </div>
+
+                <div>
+                    <strong>AI</strong>
+                    <small>Resume Analysis</small>
+                </div>
+
+                <div>
+                    <strong>Fast</strong>
+                    <small>Talent Discovery</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="recruiter-content">
+
+        <div class="section-heading">
+
+            <i class="fa-solid fa-building"></i>
+
+            <h2>
+                For Recruiters
+            </h2>
+
+        </div>
+
+
+        <div class="heading-line"></div>
+
+
+        <h3>
+            Discover Better Candidates with AI
+        </h3>
+
+
+        <p>
+            Talent Vector helps recruiters identify candidates
+            whose skills and experience closely match their
+            hiring requirements.
+        </p>
+
+
+        <div class="recruiter-points">
+
+            <div>
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>
+                    Faster resume screening
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>
+                    Skill-based candidate matching
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>
+                    Better hiring decisions
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <i class="fa-solid fa-check"></i>
+
+                <span>
+                    Reduce manual screening effort
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <button class="recruiter-btn"
+                onclick="window.location.href='register.html'">
+
+            Get Started as Recruiter
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section class="contact-section" id="contact">
+
+    <div class="contact-heading">
+
+        <div class="section-heading">
+
+            <i class="fa-solid fa-envelope"></i>
+
+            <h2>
+                Contact Us
+            </h2>
+
+        </div>
+
+
+        <div class="heading-line"></div>
+
+
+        <p>
+            Have a question, suggestion or partnership idea?
+            We'd love to hear from you.
+        </p>
+
+    </div>
+
+
+    <div class="contact-grid">
+
+        <div class="contact-card">
+
+            <div class="contact-icon purple">
+
+                <i class="fa-solid fa-envelope"></i>
+
+            </div>
+
+            <h3>
+                Email
+            </h3>
+
+            <p>
+                support@talentvector.com
+            </p>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <div class="contact-icon blue">
+
+                <i class="fa-solid fa-phone"></i>
+
+            </div>
+
+            <h3>
+                Support
+            </h3>
+
+            <p>
+                Career & Technical Support
+            </p>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <div class="contact-icon green">
+
+                <i class="fa-solid fa-handshake"></i>
+
+            </div>
+
+            <h3>
+                Partnerships
+            </h3>
+
+            <p>
+                Recruiter & Organization Partnerships
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="quote">
+
+        <span>
+            “
+        </span>
+
+        <p>
+
+            The right opportunity is out there.
+            <br>
+
+            We help you <strong>find it.</strong>
+
+        </p>
+
+    </div>
+
+
+    <div class="footer-logo">
+
+        <div class="logo-icon">
+            V
+        </div>
+
+        <div>
+
+            <h2>
+                TALENT <span>VECTOR</span>
+            </h2>
+
+            <p>
+                Your Talent. Our Technology. Your Success.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="start">
+
+        <div class="rocket">
+            🚀
+        </div>
+
+        <div>
+
+            <p>
+                Start your journey today!
+            </p>
+
+            <button onclick="window.location.href='register.html'">
+                Get Started Now →
+            </button>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     BACK TO TOP
+===================================================== -->
+
+<a href="#top"
+   class="back-to-top">
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+</a>
+
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
