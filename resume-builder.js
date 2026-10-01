@@ -724,10 +724,10 @@ function editResume() {
 
 
 // =====================================================
-// PDF DOWNLOAD
+// PDF DOWNLOAD - PRINT / SAVE AS PDF
 // =====================================================
 
-async function downloadPDF() {
+function downloadPDF() {
 
     const resumePreview =
         document.getElementById(
@@ -767,456 +767,451 @@ async function downloadPDF() {
 
 
     // =================================================
-    // CHECK HTML2CANVAS
+    // GET RESUME NAME
     // =================================================
-
-    if (
-        typeof html2canvas ===
-        "undefined"
-    ) {
-
-        alert(
-            "PDF library is not loaded. Please refresh the page."
-        );
-
-        return;
-
-    }
-
-
-    // =================================================
-    // CHECK JSPDF
-    // =================================================
-
-    if (
-        typeof window.jspdf ===
-        "undefined"
-        &&
-        typeof window.jsPDF ===
-        "undefined"
-    ) {
-
-        alert(
-            "PDF library is not loaded. Please refresh the page."
-        );
-
-        return;
-
-    }
-
 
     const name =
         getValue("fullName")
         ||
-        "Talent-Vector-Resume";
-
-
-    const filename =
-
-        name
-
-            .replace(
-                /[^a-z0-9]/gi,
-                "-"
-            )
-
-            .replace(
-                /-+/g,
-                "-"
-            )
-
-            +
-            "-Resume.pdf";
+        "Talent Vector Resume";
 
 
     // =================================================
-    // TEMPORARY PDF CONTAINER
+    // OPEN PRINT WINDOW
     // =================================================
 
-    const pdfContainer =
-        document.createElement(
-            "div"
+    const printWindow =
+        window.open(
+            "",
+            "_blank"
         );
 
 
-    pdfContainer.style.position =
-        "fixed";
-
-    pdfContainer.style.left =
-        "-99999px";
-
-    pdfContainer.style.top =
-        "0";
-
-    pdfContainer.style.width =
-        "794px";
-
-    pdfContainer.style.background =
-        "#ffffff";
-
-    pdfContainer.style.padding =
-        "0";
-
-    pdfContainer.style.margin =
-        "0";
-
-    pdfContainer.style.zIndex =
-        "-9999";
-
-
-    // =================================================
-    // CLONE RESUME
-    // =================================================
-
-    const pdfResume =
-        resumePaper.cloneNode(
-            true
-        );
-
-
-    pdfResume.style.width =
-        "794px";
-
-    pdfResume.style.maxWidth =
-        "794px";
-
-    pdfResume.style.minWidth =
-        "794px";
-
-    pdfResume.style.height =
-        "auto";
-
-    pdfResume.style.minHeight =
-        "1123px";
-
-    pdfResume.style.margin =
-        "0";
-
-    pdfResume.style.padding =
-        "45px";
-
-    pdfResume.style.boxSizing =
-        "border-box";
-
-    pdfResume.style.background =
-        "#ffffff";
-
-    pdfResume.style.color =
-        "#111111";
-
-    pdfResume.style.position =
-        "relative";
-
-    pdfResume.style.left =
-        "0";
-
-    pdfResume.style.top =
-        "0";
-
-    pdfResume.style.transform =
-        "none";
-
-    pdfResume.style.zoom =
-        "1";
-
-    pdfResume.style.overflow =
-        "visible";
-
-    pdfResume.style.display =
-        "block";
-
-    pdfResume.style.boxShadow =
-        "none";
-
-
-    pdfContainer.appendChild(
-        pdfResume
-    );
-
-
-    document.body.appendChild(
-        pdfContainer
-    );
-
-
-    // =================================================
-    // WAIT FOR RENDER
-    // =================================================
-
-    await new Promise(
-        resolve => {
-
-            requestAnimationFrame(
-                () => {
-
-                    requestAnimationFrame(
-                        () => {
-
-                            setTimeout(
-                                resolve,
-                                300
-                            );
-
-                        }
-                    );
-
-                }
-            );
-
-        }
-    );
-
-
-    try {
-
-        // =================================================
-        // CREATE CANVAS
-        // =================================================
-
-        const canvas =
-            await html2canvas(
-
-                pdfResume,
-
-                {
-
-                    scale: 2,
-
-                    useCORS: true,
-
-                    allowTaint: true,
-
-                    backgroundColor:
-                        "#ffffff",
-
-                    logging: false,
-
-                    width: 794,
-
-                    windowWidth: 794,
-
-                    scrollX: 0,
-
-                    scrollY: 0
-
-                }
-
-            );
-
-
-        // =================================================
-        // GET JSPDF
-        // =================================================
-
-        let PDF;
-
-
-        if (
-            window.jspdf
-            &&
-            window.jspdf.jsPDF
-        ) {
-
-            PDF =
-                window.jspdf.jsPDF;
-
-        }
-
-
-        else if (
-            window.jsPDF
-        ) {
-
-            PDF =
-                window.jsPDF;
-
-        }
-
-
-        else {
-
-            throw new Error(
-                "jsPDF not available."
-            );
-
-        }
-
-
-        // =================================================
-        // CREATE A4 PDF
-        // =================================================
-
-        const pdf =
-            new PDF({
-
-                orientation:
-                    "portrait",
-
-                unit:
-                    "mm",
-
-                format:
-                    "a4",
-
-                compress:
-                    true
-
-            });
-
-
-        const pageWidth =
-            210;
-
-        const pageHeight =
-            297;
-
-
-        // =================================================
-        // CANVAS DIMENSIONS
-        // =================================================
-
-        const canvasWidth =
-            canvas.width;
-
-        const canvasHeight =
-            canvas.height;
-
-
-        const pdfWidth =
-            pageWidth;
-
-
-        const pdfHeight =
-
-            (
-                canvasHeight *
-                pdfWidth
-            )
-            /
-            canvasWidth;
-
-
-        // =================================================
-        // MULTI-PAGE PDF
-        // =================================================
-
-        let position = 0;
-
-
-        let remainingHeight =
-            pdfHeight;
-
-
-        pdf.addImage(
-
-            canvas,
-
-            "JPEG",
-
-            0,
-
-            position,
-
-            pdfWidth,
-
-            pdfHeight,
-
-            undefined,
-
-            "FAST"
-
-        );
-
-
-        remainingHeight -=
-            pageHeight;
-
-
-        while (
-            remainingHeight > 0
-        ) {
-
-            position =
-                remainingHeight -
-                pdfHeight;
-
-
-            pdf.addPage();
-
-
-            pdf.addImage(
-
-                canvas,
-
-                "JPEG",
-
-                0,
-
-                position,
-
-                pdfWidth,
-
-                pdfHeight,
-
-                undefined,
-
-                "FAST"
-
-            );
-
-
-            remainingHeight -=
-                pageHeight;
-
-        }
-
-
-        // =================================================
-        // SAVE PDF
-        // =================================================
-
-        pdf.save(
-            filename
-        );
-
-
-        console.log(
-            "Talent Vector PDF downloaded successfully."
-        );
-
-
-    }
-
-    catch (error) {
-
-        console.error(
-            "PDF generation error:",
-            error
-        );
-
+    if (!printWindow) {
 
         alert(
-            "Unable to create PDF. Please try again."
+            "Please allow pop-ups for this website to print your resume."
         );
+
+        return;
 
     }
 
 
     // =================================================
-    // REMOVE TEMPORARY CONTAINER
+    // PRINT DOCUMENT
     // =================================================
 
-    if (
-        pdfContainer
-        &&
-        pdfContainer.parentNode
-    ) {
+    printWindow.document.open();
 
-        pdfContainer.parentNode.removeChild(
-            pdfContainer
+    printWindow.document.write(`
+
+        <!DOCTYPE html>
+
+        <html>
+
+        <head>
+
+            <meta charset="UTF-8">
+
+            <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1.0"
+            >
+
+            <title>
+                ${escapeHTML(name)} - Resume
+            </title>
+
+
+            <style>
+
+                /* =========================================
+                   PAGE
+                ========================================= */
+
+                @page {
+
+                    size: A4;
+
+                    margin: 0;
+
+                }
+
+
+                /* =========================================
+                   RESET
+                ========================================= */
+
+                * {
+
+                    box-sizing: border-box;
+
+                }
+
+
+                html,
+                body {
+
+                    margin: 0;
+
+                    padding: 0;
+
+                    width: 210mm;
+
+                    min-height: 297mm;
+
+                    background: #ffffff;
+
+                }
+
+
+                body {
+
+                    font-family: Arial, sans-serif;
+
+                    color: #252525;
+
+                }
+
+
+                /* =========================================
+                   RESUME PAPER
+                ========================================= */
+
+                .resume-paper {
+
+                    width: 210mm;
+
+                    min-height: 297mm;
+
+                    padding: 15mm;
+
+                    margin: 0;
+
+                    background: #ffffff;
+
+                    color: #252525;
+
+                    font-family: Arial, sans-serif;
+
+                    line-height: 1.5;
+
+                    box-sizing: border-box;
+
+                    animation: none !important;
+
+                    transition: none !important;
+
+                    transform: none !important;
+
+                    opacity: 1 !important;
+
+                    visibility: visible !important;
+
+                    box-shadow: none !important;
+
+                    overflow: visible !important;
+
+                }
+
+
+                /* =========================================
+                   NAME
+                ========================================= */
+
+                .resume-name {
+
+                    font-size: 30px;
+
+                    font-weight: 800;
+
+                    color: #222222;
+
+                    margin-bottom: 3px;
+
+                }
+
+
+                /* =========================================
+                   JOB TITLE
+                ========================================= */
+
+                .resume-title {
+
+                    color: #7036ff;
+
+                    font-size: 14px;
+
+                    font-weight: 700;
+
+                    margin-bottom: 10px;
+
+                }
+
+
+                /* =========================================
+                   CONTACT
+                ========================================= */
+
+                .resume-contact {
+
+                    display: flex;
+
+                    flex-wrap: wrap;
+
+                    gap: 6px 14px;
+
+                    padding-bottom: 15px;
+
+                    border-bottom: 2px solid #7036ff;
+
+                    font-size: 9px;
+
+                    color: #666666;
+
+                }
+
+
+                /* =========================================
+                   SECTIONS
+                ========================================= */
+
+                .resume-section {
+
+                    margin-top: 19px;
+
+                    animation: none !important;
+
+                    transition: none !important;
+
+                    transform: none !important;
+
+                    opacity: 1 !important;
+
+                    visibility: visible !important;
+
+                    break-inside: avoid;
+
+                    page-break-inside: avoid;
+
+                }
+
+
+                /* =========================================
+                   SECTION TITLES
+                ========================================= */
+
+                .resume-section-title {
+
+                    font-size: 12px;
+
+                    font-weight: 800;
+
+                    color: #7036ff;
+
+                    text-transform: uppercase;
+
+                    margin-bottom: 7px;
+
+                    padding-bottom: 4px;
+
+                    border-bottom: 1px solid #e6e1f5;
+
+                }
+
+
+                /* =========================================
+                   SUMMARY
+                ========================================= */
+
+                .resume-summary {
+
+                    font-size: 10px;
+
+                    color: #555555;
+
+                }
+
+
+                /* =========================================
+                   ITEMS
+                ========================================= */
+
+                .resume-item {
+
+                    margin-bottom: 11px;
+
+                    break-inside: avoid;
+
+                    page-break-inside: avoid;
+
+                }
+
+
+                .resume-item-title {
+
+                    font-size: 11px;
+
+                    font-weight: 800;
+
+                    color: #333333;
+
+                }
+
+
+                .resume-item-subtitle {
+
+                    font-size: 9px;
+
+                    color: #777777;
+
+                    margin-top: 2px;
+
+                }
+
+
+                .resume-item-description {
+
+                    margin-top: 5px;
+
+                    font-size: 9px;
+
+                    color: #555555;
+
+                    white-space: pre-line;
+
+                }
+
+
+                /* =========================================
+                   SKILLS
+                ========================================= */
+
+                .resume-skills {
+
+                    display: flex;
+
+                    flex-wrap: wrap;
+
+                    gap: 5px;
+
+                }
+
+
+                .resume-skill {
+
+                    display: inline-block;
+
+                    background: #f0ebff;
+
+                    color: #6333d5;
+
+                    padding: 4px 7px;
+
+                    border-radius: 5px;
+
+                    font-size: 8px;
+
+                    font-weight: 700;
+
+                }
+
+
+                /* =========================================
+                   REMOVE ALL ANIMATIONS
+                ========================================= */
+
+                .resume-paper *,
+                .resume-paper *::before,
+                .resume-paper *::after {
+
+                    animation: none !important;
+
+                    transition: none !important;
+
+                    transform: none !important;
+
+                    opacity: 1 !important;
+
+                    visibility: visible !important;
+
+                }
+
+
+                /* =========================================
+                   PRINT
+                ========================================= */
+
+                @media print {
+
+                    html,
+                    body {
+
+                        width: 210mm;
+
+                        min-height: 297mm;
+
+                        margin: 0;
+
+                        padding: 0;
+
+                        background: #ffffff;
+
+                    }
+
+
+                    .resume-paper {
+
+                        width: 210mm;
+
+                        min-height: 297mm;
+
+                        margin: 0;
+
+                        padding: 15mm;
+
+                    }
+
+                }
+
+            </style>
+
+        </head>
+
+
+        <body>
+
+            ${resumePaper.outerHTML}
+
+        </body>
+
+        </html>
+
+    `);
+
+
+    printWindow.document.close();
+
+
+    // =================================================
+    // PRINT AFTER PAGE LOAD
+    // =================================================
+
+    printWindow.onload = function () {
+
+        setTimeout(
+            function () {
+
+                printWindow.focus();
+
+                printWindow.print();
+
+            },
+            600
         );
 
-    }
+    };
 
 }
 
